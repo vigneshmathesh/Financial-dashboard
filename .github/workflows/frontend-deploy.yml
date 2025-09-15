@@ -1,0 +1,16 @@
+name: Frontend Deploy
+on:
+  push:
+    paths:
+      - "frontend/**"
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+      # Upload build to S3 (to be added later)
