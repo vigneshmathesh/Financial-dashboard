@@ -2,12 +2,18 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.get("/api/summary")
-def summary():
+# Root route
+@app.route("/")
+def home():
+    return jsonify({"message": "Backend is running!"})
+
+# Example API route (frontend will call this)
+@app.route("/api/data")
+def get_data():
     return jsonify({
-        "revenue": 15000,
-        "expenses": 7000,
-        "profit": 8000
+        "revenue": 10000,
+        "expenses": 5000,
+        "profit": 5000
     })
 
 if __name__ == "__main__":
